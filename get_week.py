@@ -27,12 +27,14 @@ def show_week_window():
 
     # Create a simple Tkinter window
     window = tk.Tk()
-    window.title("Current Week")
+    window.title("Coursera UOL Comp Science Current Week")
 
     # Display the current week in the window
     label_text = f"Current Week: {current_week}" if current_week else "Unable to determine the current week."
-    label = tk.Label(window, text=label_text)
+    label = tk.Label(window, text=label_text, font = ('Helvetica 20 bold'))
     label.pack(padx=20, pady=20)
+
+    window.after(10000, lambda: window.destroy()) # Destroy the widget after set amount of seconds
 
     # Run the Tkinter event loop
     window.mainloop()
