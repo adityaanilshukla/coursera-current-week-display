@@ -15,8 +15,8 @@ def get_current_week():
         li_element = ul_element.find('li')
         
         if li_element:
-            # Extract the week number from the li element
-            week_number = li_element.text.split()[1]
+            # Extract the week number from the li element and remove the dot
+            week_number = li_element.text.split()[1].replace('.', '')
             return week_number
 
     return None
@@ -35,7 +35,7 @@ def show_week_window():
     window.attributes('-alpha', 0.8)  # Set transparency level (0.0 to 1.0)
 
     # Display the current week in the window with white text on a black background
-    label_text = f"Week: {current_week}" if current_week else "Unable to determine the current week."
+    label_text = f"UOL CS Week: {current_week}" if current_week else "Unable to determine the current week."
     label = tk.Label(window, text=label_text, font=('Helvetica', 20, 'bold'), fg='white', bg='black')
     label.pack(padx=20, pady=20)
 
