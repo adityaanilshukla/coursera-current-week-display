@@ -2,7 +2,20 @@ import requests
 from bs4 import BeautifulSoup
 import tkinter as tk
 
+def is_internet_connected():
+    try:
+        # Try to establish a connection to a well-known website
+        response = requests.get("https://www.google.com", timeout=5)
+        return response.status_code == 200
+    except requests.ConnectionError:
+        return False
+
 def get_current_week():
+
+    # Check for internet connectivity
+    if not is_internet_connected():
+        return None  # Return None or some default value when not connected
+
     url = "https://github.com/world-class/REPL"
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
